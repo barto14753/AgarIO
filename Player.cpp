@@ -43,7 +43,7 @@ sf::CircleShape Player::getShape(float width, float height) {
 
 void Player::addSize(Dot d) {
     size += d.getSize() * GROWTH_RATE;
-
+    if(size > MAX_SIZE) size = MAX_SIZE;
 }
 
 
@@ -134,7 +134,6 @@ int randomTime()
 }
 void Player::randomMove()
 {
-    printf("Making random move | %d\n", moveTicksLast);
     if(moveTicksLast <= 0)
     {
         currentMove = randomDirection();
@@ -146,7 +145,7 @@ void Player::randomMove()
 
 
 
-
+// TODO: More sophisticated randomMove()
 void Player::randomMove(std::vector<Player> players, int index) {
     std::vector<Player> weakerPlayers;
     int nearestStronger = index;
@@ -194,7 +193,6 @@ void Player::randomMove(std::vector<Player> players, int index) {
         }
     }
     //TODO - sorting weakerPlayers -> founding nearest danger -> deleting weakerPlayers with
-
 
 }
 

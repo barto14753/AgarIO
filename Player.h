@@ -11,7 +11,8 @@
 
 #define MAX_SPEED 10.0
 #define INIT_SIZE 30.0
-#define GROWTH_RATE 0.5
+#define MAX_SIZE 600.0
+#define GROWTH_RATE 1.0
 #define MAX_MOVE_TICKS 100
 #define MIN_MOVE_TICKS 10
 

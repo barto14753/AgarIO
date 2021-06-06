@@ -9,7 +9,7 @@ AgarIO is my own variation of popular browser game called agar.io.
 You play as a small dot at the beginning and you can eat static dots with same size or other players(bots) to become bigger. You also can be eaten by other players so take care. 
 
 ### Win/Lose conditions
-You win when you become last alive and you lose when you got eaten.
+You win when you become last alive or you get max score first. You lose when you got eaten or someone got max score before you.
 
 ### Highscore
 You can see how big you and your opponents are on highscore placed in top-left corner.

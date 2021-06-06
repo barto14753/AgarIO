@@ -23,6 +23,9 @@
 #define FRAME_STOP 100
 #define BOTS_COUNT 10
 
+
+enum GameResult{WIN, LOSS, UNKNOWN};
+
 class Game{
 private:
     int width;
@@ -46,7 +49,8 @@ public:
     void addRandomDot();
     void simulateBots();
     void drawPlayers();
-    void endGame(bool isWin);
+    void endGame(GameResult result);
+    GameResult isSomeoneWinner();
 
 };
 

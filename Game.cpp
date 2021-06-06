@@ -68,7 +68,9 @@ void Game::run() {
         window.display();
         sf::sleep(sf::microseconds(FRAME_STOP));
 
-        if(bots.size() == 0) endGame(true);
+        GameResult result = isSomeoneWinner();
+        if(bots.size() == 0 || result == WIN) endGame(WIN);
+        else if(result == LOSS) endGame(LOSS);
     }
 
 }
@@ -131,7 +133,7 @@ void Game::collisions() {
             if(bots[i].getSize() > player.getSize())
             {
                 bots[i].addSize(player);
-                endGame(false);
+                endGame(LOSS);
 
             }
             else if(bots[i].getSize() < player.getSize())
@@ -172,7 +174,6 @@ void Game::addRandomDot() {
 void Game::simulateBots() {
     for(int i=1; i<bots.size(); i++)
     {
-        printf("Sumulate bot %d\n", i);
         bots[i].randomMove();
     }
 }
@@ -185,9 +186,9 @@ void Game::drawPlayers() {
     }
 }
 
-void Game::endGame(bool isWin) {
+void Game::endGame(GameResult result) {
 
-    if(isWin)
+    if(result == WIN)
     {
         Result result("You won", player.getSize());
         result.renderResult(window);
@@ -217,5 +218,14 @@ void Game::endGame(bool isWin) {
 
     return;
 
+}
+
+GameResult Game::isSomeoneWinner() {
+    if(player.getSize() >= MAX_SIZE) return WIN;
+    for(int i=1; i<bots.size(); i++)
+    {
+        if(bots[i].getSize() >= (MAX_SIZE)) return LOSS;
+    }
+    return UNKNOWN;
 }
 
